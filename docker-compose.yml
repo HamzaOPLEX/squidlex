@@ -1,0 +1,25 @@
+version: '3.2'
+services:
+  SquidProxy:
+    ports:
+      - "3128:3128"
+    image: "squidproxy"
+    volumes:
+      - type: bind
+        source: /home/oplexadmin/SquidProxy/logs/access.log
+        target: /var/log/squid/access.log
+      - type: bind
+        source: /home/oplexadmin/SquidProxy/squid/cache.log
+        target: /var/log/squid/cache.log
+      - type: bind
+        source: /home/oplexadmin/SquidProxy/squidguard/squidguard.conf
+        target: /etc/squidguard/squidGuard.conf
+      - type: bind
+        source: /home/oplexadmin/SquidProxy/squid/squid.conf
+        target: /etc/squid/squid.conf
+    container_name: SquidProxy
+    restart: always
+    networks:
+      - bridge
+    environment:
+      - REDIRECT_URL=https://www.google.com
