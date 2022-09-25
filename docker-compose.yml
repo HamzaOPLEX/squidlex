@@ -1,4 +1,3 @@
-version: '3.9'
 services:
   SquidProxy:
     ports:
@@ -9,7 +8,7 @@ services:
         source: /home/oplexadmin/squidlex/logs/access.log
         target: /var/log/squid/access.log
       - type: bind
-        source: /home/oplexadmin/squidlex/cache/cache.log
+        source: /home/oplexadmin/squidlex/logs/cache.log
         target: /var/log/squid/cache.log
       - type: bind
         source: /home/oplexadmin/squidlex/squidguard/squidguard.conf
